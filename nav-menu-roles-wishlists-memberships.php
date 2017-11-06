@@ -25,10 +25,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 function nmr_wlm_init(){ 
-	if( function_exists( 'wlmapi_get_levels' ) ){
-		add_filter( 'nav_menu_roles', 'nmr_wlm_new_roles' );
-		add_filter( 'nav_menu_roles_item_visibility', 'nmr_wlm_item_visibility', 10, 2 );
-	}
+    if( function_exists( 'wlmapi_get_levels' ) ){
+        add_filter( 'nav_menu_roles', 'nmr_wlm_new_roles' );
+        add_filter( 'nav_menu_roles_item_visibility', 'nmr_wlm_item_visibility', 10, 2 );
+    }
 }
 add_action( 'plugins_loaded', 'nmr_wlm_init', 20 );
 
@@ -40,7 +40,7 @@ add_action( 'plugins_loaded', 'nmr_wlm_init', 20 );
  * @return array
  * @since 1.0.0
  */
-function nmw_wcm_new_roles( $roles ){
+function nmr_wlm_new_roles( $roles ){
     return array_merge( $roles, nmr_wlm_get_roles_wrapper() );
 }
 
@@ -54,7 +54,7 @@ function nmw_wcm_new_roles( $roles ){
  * @return boolean
  * @since 1.0.0
  */
-function nmw_wcm_item_visibility( $visible, $item ){
+function nmr_wlm_item_visibility( $visible, $item ){
     
   if( ! $visible && isset( $item->roles ) && is_array( $item->roles ) ){
       
